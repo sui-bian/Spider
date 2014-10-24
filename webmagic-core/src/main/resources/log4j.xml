@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="fout" class="org.apache.log4j.RollingFileAppender">
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="1MB"/>
+        <param name="File" value="D:/slog/log.txt"/>
+        <param name="MaxBackupIndex" value="3"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss,SSS} %-5p %t %c(%F:%L) ## %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="fout" />
+    </logger>
+
+    <logger name="net.sf.ehcache" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="fout" />
+    </logger>
+
+    <logger name="us.codecraft.webmagic.dao" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="fout" />
+    </logger>
+
+    <root>
+        <level value="info" />
+        <appender-ref ref="fout" />
+    </root>
+
+</log4j:configuration>

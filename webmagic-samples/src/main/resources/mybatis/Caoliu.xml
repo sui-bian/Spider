@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="us.codecraft.webmagic.dao.CaoliuDao">
+
+
+    <insert id="batchInsertCL" parameterType="java.util.List">
+        insert into CL(title,link,reply,pagenum) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.title},#{item.link},#{item.reply},#{item.pagenum})
+        </foreach>
+    </insert>
+
+    <insert id="insertCL" parameterType="CaoliuVo">
+        insert into CL(title,link,reply) values
+         (#{title},#{link},#{reply})
+    </insert>
+
+
+</mapper>
